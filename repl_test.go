@@ -37,7 +37,7 @@ func TestCleanInput(t *testing.T) {
 			word := actual[i]
 			expectedWord := c.expected[i]
 			if word != expectedWord {
-				t.Errorf("Words don't match: %v, %v", word, expectedWord)
+				t.Errorf("Words don't match: %v, %v", c.input, c.expected)
 			}
 		}
 	}

@@ -1,23 +1,27 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
 
 func main() {
-	fmt.Println("Hello, World!")
-	cleanInput("hello world")
+	scanner := bufio.NewScanner(os.Stdin)
+
+	for {
+		fmt.Print("Pokedex >")
+		scanner.Scan()
+		input := scanner.Text()
+		words := cleanInput(input)
+		fmt.Printf("Your command was: %v\n", words[0])
+	}
 }
 
 func cleanInput(text string) []string {
-	words := make([]string, len(text))
-	if len(words) == 0 {
-		return []string{}
-	}
+	output := strings.ToLower(text)
+	words := strings.Fields(output)
 
-	for i := 0; i < len(text); i++ {
-		words = append(words, words[i])
-	}
-
-	fmt.Println(words)
-
-	return []string{}
+	return words
 }
