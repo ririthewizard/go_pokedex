@@ -7,15 +7,33 @@ import (
 	"strings"
 )
 
+type cliCommand struct {
+	name        string
+	description string
+	callback    func() error
+}
+
 func main() {
+	commands := map[string]cliCommand{
+		"exit": {
+			name: "exit",
+			description: "Exit the poxedex",
+			callback: commandExit,
+		},
+		"help": {
+			name: "help",
+			description: "	",
+		}
+	}
 	scanner := bufio.NewScanner(os.Stdin)
+
 
 	for {
 		fmt.Print("Pokedex >")
 		scanner.Scan()
 		input := scanner.Text()
 		words := cleanInput(input)
-		fmt.Printf("Your command was: %v\n", words[0])
+		commandExit()
 	}
 }
 
@@ -24,4 +42,10 @@ func cleanInput(text string) []string {
 	words := strings.Fields(output)
 
 	return words
+}
+
+func commandExit() error {
+	fmt.Print("Closing the Poxedex... Goodbye!")
+	os.Exit(0)
+	return nil
 }
