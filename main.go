@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/ririthewizard/go_pokedex/internal/resources"
 )
 
 type cliCommand struct {
