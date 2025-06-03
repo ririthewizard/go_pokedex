@@ -3,10 +3,10 @@ package main
 import (
 	"bufio"
 	"fmt"
+	//"github.com/ririthewizard/go_pokedex/internal/request"
+	//"github.com/ririthewizard/go_pokedex/pkg/resources"
 	"os"
 	"strings"
-
-	"resources"
 )
 
 type cliCommand struct {
@@ -50,8 +50,14 @@ func cleanInput(text string) []string {
 	return words
 }
 
+func commandGetLocationAreas() error {
+
+	return nil
+}
+
 func commandExit() error {
-	fmt.Println("Closing the Poxedex... Goodbye!")
+	fmt.Println()
+	fmt.Println("Closing the Pokedex... Goodbye!")
 	os.Exit(0)
 	return nil
 }
@@ -72,7 +78,7 @@ func getCommands() map[string]cliCommand {
 	return map[string]cliCommand{
 		"exit": {
 			name:        "exit",
-			description: "Exit the poxedex",
+			description: "Exit the Pokedex",
 			callback:    commandExit,
 		},
 		"help": {
